@@ -1,8 +1,8 @@
 # Program compiled
-./philo
+philo
 
 # Program summary
-./esquema
+esquema
 
 # Compiled object files
-./obj/
+obj/

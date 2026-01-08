@@ -10,5 +10,5 @@ int	print_error(const char *str)
 		write(2, &str[i], 1);
 		i++;
 	}
-	return (0);
+	return (1);
 }

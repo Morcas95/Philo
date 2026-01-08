@@ -2,11 +2,13 @@
 
 int main(int argc, char **argv)
 {
+    t_data data;
     if (argc < 5 || argc > 6)
     {
         print_error("Only 5 or 6 arguments to be entered.\n");
         return (1);
     }
-    check_input(argc, argv);
+    if (check_input(argc, argv, &data) == 1)
+		return (1);
     return (0);
 }

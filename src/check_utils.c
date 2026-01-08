@@ -3,14 +3,35 @@
 /*                                                        :::      ::::::::   */
 /*   check_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: morcas <morcas@student.42.fr>              +#+  +:+       +#+        */
+/*   By: maalonso <maalonso@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/05 21:41:13 by morcas            #+#    #+#             */
-/*   Updated: 2026/01/07 20:20:25 by morcas           ###   ########.fr       */
+/*   Updated: 2026/01/08 14:16:32 by maalonso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
+
+void set_value(char **value, t_data *data)
+{
+	int i;
+
+	i = 0;
+	while (value[i])
+	{
+		if (i == 0)
+			data->num_philo = ft_atoi(value[i]);
+		if (i == 1)
+			data->time_to_die = ft_atoi_long(value[i]);
+		if (i == 2)
+			data->time_to_eat = ft_atoi_long(value[i]);
+		if (i == 3)
+			data->time_to_sleep = ft_atoi_long(value[i]);
+		if (i == 4)
+			data->must_eat_count = ft_atoi(value[i]);
+		i++;
+	}
+}
 
 int	check_nbr(char *argv)
 {
@@ -27,7 +48,7 @@ int	check_nbr(char *argv)
 	return (1);
 }
 
-int	check_input(int argc, char **argv)
+int	check_input(int argc, char **argv, t_data *data)
 {
 	int		i;
 	long	tmp_argv;
@@ -38,19 +59,18 @@ int	check_input(int argc, char **argv)
 		tmp_array = ft_split(argv[1], ' ');
 	else
 		tmp_array = argv + 1;
-	while (i < argc)
+	while (tmp_array && tmp_array[i])
 	{
-		if (!tmp_array[i])
+		if (*tmp_array[i] == '\0')
 			return (print_error("Error\nEmpty argument\n"));
 		tmp_argv = ft_atoi_long(tmp_array[i]);
 		if (tmp_argv < 1 || tmp_argv > INT_MAX)
 			return (print_error("Error\nOnly positive numbers inside INT range\n"));
-		if (tmp_argv < INT_MIN || tmp_argv > INT_MAX)
-			return (print_error("Error\nOnly numbers inside INT range\n"));
 		if (!check_nbr(tmp_array[i]))
 			return (print_error("Error\nOnly numbers to be introduced\n"));
 		i++;
 	}
+	set_value(tmp_array, data);
 	if (argc == 2)
 		free_all(tmp_array);
 	return (0);

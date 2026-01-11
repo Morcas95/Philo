@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: maalonso <maalonso@student.42.fr>          +#+  +:+       +#+        */
+/*   By: morcas <morcas@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/05 21:41:13 by morcas            #+#    #+#             */
-/*   Updated: 2026/01/08 14:16:32 by maalonso         ###   ########.fr       */
+/*   Updated: 2026/01/11 01:14:37 by morcas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void set_value(char **value, t_data *data)
 	while (value[i])
 	{
 		if (i == 0)
-			data->num_philo = ft_atoi(value[i]);
+			data->number_philo = ft_atoi(value[i]);
 		if (i == 1)
 			data->time_to_die = ft_atoi_long(value[i]);
 		if (i == 2)
@@ -28,7 +28,7 @@ void set_value(char **value, t_data *data)
 		if (i == 3)
 			data->time_to_sleep = ft_atoi_long(value[i]);
 		if (i == 4)
-			data->must_eat_count = ft_atoi(value[i]);
+			data->number_eats = ft_atoi(value[i]);
 		i++;
 	}
 }

@@ -6,3 +6,4 @@ esquema
 
 # Compiled object files
 obj/
+libft/*.o

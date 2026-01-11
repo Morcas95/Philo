@@ -41,5 +41,6 @@ int	print_error(const char *str);
 int check_input(int argc, char **argv, t_data *data);
 void set_value(char **value, t_data *data);
 int	check_nbr(char *argv);
+void init_forks(t_data *data);
 
 #endif

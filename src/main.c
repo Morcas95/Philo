@@ -18,5 +18,7 @@ int main(int argc, char **argv)
 		free(data.philos);
 		return (1);
 	}
-    return (0);
+	init_forks(&data);
+	free(data.forks);
+    return (free(data.philos), 0);
 }

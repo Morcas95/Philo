@@ -3,7 +3,7 @@ CFLAGS = -Wall -Wextra -Werror
 NAME = philo
 LIBFT = ./libft/libft.a
 INCLUDE = -I./include
-SRC =	./src/main.c ./src/check_utils.c ./src/errors.c
+SRC =	./src/main.c ./src/check_utils.c ./src/errors.c ./init.c
 OBJ_DIR = obj
 OBJ = $(addprefix $(OBJ_DIR)/, $(notdir $(SRC:.c=.o)))
 

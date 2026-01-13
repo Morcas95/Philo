@@ -38,9 +38,12 @@ typedef struct s_data
 
 
 int	print_error(const char *str);
+void cleanup(t_data *data, int stage);
 int check_input(int argc, char **argv, t_data *data);
 void set_value(char **value, t_data *data);
 int	check_nbr(char *argv);
-void init_forks(t_data *data);
+int init_mutexes(t_data *data);
+void init_philos(t_data *data);
+int create_threads(t_data *data);
 
 #endif

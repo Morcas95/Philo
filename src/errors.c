@@ -12,3 +12,24 @@ int	print_error(const char *str)
 	}
 	return (1);
 }
+
+void cleanup(t_data *data, int stage)
+{
+    int i;
+    
+    if (stage >= 1 && data->forks)
+        free(data->forks);
+    if (stage >= 2 && data->philos)
+        free(data->philos);
+    if (stage >= 3)
+    {
+        i = 0;
+        while (i < data->number_philo)
+        {
+            pthread_mutex_destroy(&data->forks[i]);
+            i++;
+        }
+        pthread_mutex_destroy(&data->write_lock);
+        pthread_mutex_destroy(&data->dead_lock);
+    }
+}

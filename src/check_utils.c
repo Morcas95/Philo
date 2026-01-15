@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: maalonso <maalonso@student.42.fr>          +#+  +:+       +#+        */
+/*   By: maalonso <maalonso@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/05 21:41:13 by morcas            #+#    #+#             */
-/*   Updated: 2026/01/13 11:22:16 by maalonso         ###   ########.fr       */
+/*   Updated: 2026/01/15 16:02:19 by maalonso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ void set_value(char **value, t_data *data)
 			data->number_eats = ft_atoi(value[i]);
 		i++;
 	}
+	data->simulation_end = 0;
 }
 
 int	check_nbr(char *argv)

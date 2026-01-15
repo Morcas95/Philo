@@ -28,8 +28,11 @@ int main(int argc, char **argv)
             i++;
         }
     }
-    if (create_threads(&data) == 1)
-        return (cleanup(&data, 3), 1);
+    else
+    {
+        cleanup(&data, 3);
+        return (1);
+    }
     cleanup(&data, 3);
     return (0);
 }

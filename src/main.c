@@ -3,6 +3,7 @@
 int main(int argc, char **argv)
 {
     t_data data;
+    int i;
 
     if (argc < 5 || argc > 6)
         return (printf("Error: Wrong args\n"), 1);
@@ -17,6 +18,18 @@ int main(int argc, char **argv)
     if (init_mutexes(&data) != 0)
         return (cleanup(&data, 2), 1);
     init_philos(&data);
+    data.start_time = get_time();
+    if (create_threads(&data) == 0)
+    {
+        i = 0;
+        while (i < data.number_philo)
+        {
+            pthread_join(data.philos[i].thread, NULL);
+            i++;
+        }
+    }
+    if (create_threads(&data) == 1)
+        return (cleanup(&data, 3), 1);
     cleanup(&data, 3);
     return (0);
 }

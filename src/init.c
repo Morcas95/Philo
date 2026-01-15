@@ -15,6 +15,9 @@ int init_mutexes(t_data *data)
         }
         i++;
     }
+    /**
+     * ! Tengo que cambiar esto para que si falla 
+     * ! write_lock o dead_lock también limpie los tenedores */
     if (pthread_mutex_init(&data->write_lock, NULL) != 0)
         return (1);
     if (pthread_mutex_init(&data->dead_lock, NULL) != 0)
@@ -41,7 +44,23 @@ void init_philos(t_data *data)
 
 void *philosopher_routine(void *arg)
 {
-    printf("La rutina funciona");
+    t_philo *philo = (t_philo *)arg;
+    printf("Si");
+    if (philo->id % 2 == 0)
+        usleep(1000);
+    while (1)
+    {
+        pthread_mutex_lock(&philo->data->dead_lock);
+        if (philo->data->simulation_end == 1)
+        {
+            pthread_mutex_unlock(&philo->data->dead_lock);
+            return (NULL);
+        }
+        pthread_mutex_unlock(&philo->data->dead_lock);
+    }
+    /**
+     * * Rutinas (comer, dormir, pensar)
+     */
     return (NULL);
 }
 

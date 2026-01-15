@@ -7,6 +7,7 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include <pthread.h>
+# include <sys/time.h>
 
 typedef struct s_data  t_data;
 typedef struct s_philo t_philo;
@@ -34,6 +35,7 @@ typedef struct s_data
     t_philo *philos;
     pthread_mutex_t write_lock;
     pthread_mutex_t dead_lock;
+    long start_time;
 }					t_data;
 
 
@@ -45,5 +47,7 @@ int	check_nbr(char *argv);
 int init_mutexes(t_data *data);
 void init_philos(t_data *data);
 int create_threads(t_data *data);
+long get_time(void);
+void ft_usleep(long time, t_data *data);
 
 #endif

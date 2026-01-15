@@ -1,0 +1,68 @@
+📦 Esquema_Philosophers.txt
+
+
+1. Validación de Entrada (Parsing)
+
+   1.1 Validación de la cantidad de argumentos (argc).
+
+   1.2 Validación de formato (comprobar que solo hay dígitos).
+
+   1.3 Conversión de tipos y validación de rangos (evitar negativos/desbordamientos).
+
+
+2. Diseño de Estructuras (Data Architecture)
+
+   2.1 Definición de la estructura global (t_data) para parámetros comunes.
+
+   2.2 Definición de la estructura individual (t_philo) para el estado de cada hilo.
+
+   2.3 Lógica de punteros para evitar variables globales.
+
+
+3. Inicialización de Recursos (Setup)
+
+   3.1 Reserva de memoria dinámica (malloc) para filósofos y tenedores.
+
+   3.2 Inicialización de los mutexes de los tenedores (pthread_mutex_init).
+
+   3.3 Inicialización de mutexes de control (log/printf y estado de simulación).
+
+   3.4 Asignación de tenedores (izquierdo y derecho) a cada filósofo.
+
+
+4. La Simulación (Threading)
+
+   4.1 Creación de los hilos de los filósofos (pthread_create).
+
+   4.2 Implementación de la rutina principal del filósofo (el ciclo de vida).
+
+   4.3 Gestión del tiempo precisa con gettimeofday.
+
+
+5. Acciones del Filósofo (Rutina)
+
+   5.1 Lógica para tomar tenedores (evitar deadlocks).
+
+   5.2 Lógica de comer y actualización del tiempo de última comida.
+
+   5.3 Lógica de dormir y pensar.
+
+   5.4 Formato y sincronización de los mensajes de estado (Logs).
+
+
+6. El Monitor (Seguridad)
+
+   6.1 Vigilancia de la muerte: detección de inanición (límite 10ms).
+
+   6.2 Verificación de la condición de victoria (comidas completadas).
+
+   6.3 Mecanismo de parada segura para todos los hilos.
+
+
+7. Limpieza y Cierre (Cleanup)
+
+   7.1 Espera de hilos (pthread_join).
+
+   7.2 Destrucción de todos los mutexes.
+
+   7.3 Liberación de memoria y salida limpia.

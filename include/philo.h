@@ -1,7 +1,6 @@
 #ifndef PHILO_H
 # define PHILO_H
 
-# include "../libft/libft.h"
 # include <limits.h>
 # include <stdio.h>
 # include <stdlib.h>
@@ -36,6 +35,7 @@ typedef struct s_data
     pthread_mutex_t write_lock;
     pthread_mutex_t dead_lock;
     long start_time;
+    int meals_eaten;
 }					t_data;
 
 
@@ -49,5 +49,17 @@ void init_philos(t_data *data);
 int create_threads(t_data *data);
 long get_time(void);
 void ft_usleep(long time, t_data *data);
+int	ft_atoi(const char *nptr);
+long	ft_atoi_long(const char *str);
+char	**ft_split(char const *s, char c);
+char	**free_all(char **str);
+char	*const_ft_substr(char const *s, unsigned int start, size_t len);
+size_t	ft_strlen(const char *s);
+void	*ft_memcpy(void *dest, const void *src, size_t n);
+int	ft_strncmp(const char *s1, const char *s2, size_t n);
+void write_status(t_philo *philo, char *status);
+void pick_forks(t_philo *philo);
+void is_eating(t_philo *philo);
+void is_sleeping(t_philo *philo);
 
 #endif

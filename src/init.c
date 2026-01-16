@@ -56,10 +56,11 @@ void *philosopher_routine(void *arg)
             return (NULL);
         }
         pthread_mutex_unlock(&philo->data->dead_lock);
+        pick_forks(philo);
+        is_eating(philo);
+        is_sleeping(philo);
+        write_status(philo, "is thinking");
     }
-    /**
-     * * Rutinas (comer, dormir, pensar)
-     */
     return (NULL);
 }
 

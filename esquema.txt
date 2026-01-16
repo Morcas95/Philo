@@ -66,3 +66,9 @@
    7.2 Destrucción de todos los mutexes.
 
    7.3 Liberación de memoria y salida limpia.
+
+COSAS QUE FALTAN |
+_________________|
+
+RUTINAS EN philosopher_routine (init.c)
+LIMPIAR TENEDORES EN init_mutexes (init.c)

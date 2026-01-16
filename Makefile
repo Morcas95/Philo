@@ -1,9 +1,17 @@
 CC = gcc
 CFLAGS = -Wall -Wextra -Werror
 NAME = philo
-LIBFT = ./libft/libft.a
 INCLUDE = -I./include
-SRC =	./src/main.c ./src/check_utils.c ./src/errors.c ./init.c ./time.c
+SRC =	./src/main.c\
+		./src/check_utils.c\
+		./src/errors.c\
+		./src/init.c\
+		./src/time.c \
+		./src/lib_functions.c \
+		./src/logs.c \
+		./src/utils.c \
+		./src/actions.c
+
 OBJ_DIR = obj
 OBJ = $(addprefix $(OBJ_DIR)/, $(notdir $(SRC:.c=.o)))
 
@@ -27,15 +35,13 @@ PINK 	:= \033[35m
 
 all: $(NAME)
 
-$(NAME): $(LIBFT) $(OBJ) 
+$(NAME): $(OBJ) 
 	@echo "Compiled with $(GREEN)$(BOLD)$(CFLAGS)$(RESET)"
-	@$(CC) $(CFLAGS) -o $(NAME) $(OBJ) $(LIBFT)
+	@$(CC) $(CFLAGS) -o $(NAME) $(OBJ)
 	@echo "$(PINK)$(BOLD)----------------------------------------"
 	@echo "     $(NAME) = NOW READY FOR USE!"
 	@echo "----------------------------------------$(RESET)"
 
-$(LIBFT):
-	@$(MAKE) -C ./libft
 
 
 $(OBJ_DIR)/%.o: ./src/%.c
@@ -44,11 +50,9 @@ $(OBJ_DIR)/%.o: ./src/%.c
 	@$(CC) $(CFLAGS) $(INCLUDE) -c -o $@ $^
 
 clean:
-	@$(MAKE) clean -C ./libft
 	@rm -rf $(OBJ_DIR)
 
 fclean: clean
-	@$(MAKE) fclean -C ./libft
 	@rm -f $(NAME)
 	@echo "$(BLUE) $(BOLD)$(NAME) $(RESET) Cleansed ✅"
 

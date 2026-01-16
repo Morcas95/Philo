@@ -33,3 +33,17 @@ void cleanup(t_data *data, int stage)
         pthread_mutex_destroy(&data->dead_lock);
     }
 }
+
+char	**free_all(char **str)
+{
+	int	i;
+
+	i = 0;
+	while (str[i])
+	{
+		free(str[i]);
+		i++;
+	}
+	free(str);
+	return (NULL);
+}

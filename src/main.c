@@ -6,7 +6,7 @@ int main(int argc, char **argv)
     int i;
 
     if (argc < 5 || argc > 6)
-        return (printf("Error: Wrong args\n"), 1);
+        return (printf("Error\nWrong args\n"), 1);
     if (check_input(argc, argv, &data) == 1)
         return (1);
     data.forks = malloc(sizeof(pthread_mutex_t) * data.number_philo);

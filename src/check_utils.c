@@ -6,7 +6,7 @@
 /*   By: maalonso <maalonso@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/05 21:41:13 by morcas            #+#    #+#             */
-/*   Updated: 2026/01/19 12:05:42 by maalonso         ###   ########.fr       */
+/*   Updated: 2026/01/19 13:00:13 by maalonso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,26 +14,19 @@
 
 void set_value(char **value, t_data *data, int argc)
 {
-	int i;
-
-	i = 0;
-	while (value[i])
+    data->number_philo = ft_atoi(value[0]);
+    data->time_to_die = ft_atoi_long(value[1]);
+    data->time_to_eat = ft_atoi_long(value[2]);
+    data->time_to_sleep = ft_atoi_long(value[3]);
+    if (argc == 6)
+        data->number_of_meals = ft_atoi(value[4]);
+    else if (argc == 2)
 	{
-		if (i == 0)
-			data->number_philo = ft_atoi(value[i]);
-		if (i == 1)
-			data->time_to_die = ft_atoi_long(value[i]);
-		if (i == 2)
-			data->time_to_eat = ft_atoi_long(value[i]);
-		if (i == 3)
-			data->time_to_sleep = ft_atoi_long(value[i]);
-		if (argc == 5)
-			data->number_of_meals = ft_atoi(value[4]);
-		else
-			data->number_of_meals = -1;
-		i++;
+		
 	}
-	data->simulation_end = 0;
+	else
+        data->number_of_meals = -1;
+    data->simulation_end = 0;
 }
 
 int	check_nbr(char *argv)

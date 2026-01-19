@@ -35,7 +35,6 @@ typedef struct s_data
     pthread_mutex_t write_lock;
     pthread_mutex_t dead_lock;
     long start_time;
-    int meals_eaten;
 }					t_data;
 
 

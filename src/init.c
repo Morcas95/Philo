@@ -57,6 +57,8 @@ void *philosopher_routine(void *arg)
         }
         pthread_mutex_unlock(&philo->data->dead_lock);
         pick_forks(philo);
+        if (philo->data->number_philo == 1)
+            return (NULL);
         is_eating(philo);
         is_sleeping(philo);
         write_status(philo, "is thinking");

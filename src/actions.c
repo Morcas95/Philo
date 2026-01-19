@@ -34,7 +34,7 @@ void is_eating(t_philo *philo)
     write_status(philo, "is eating");
     ft_usleep(philo->data->time_to_eat, philo->data);
     pthread_mutex_lock(&philo->data->dead_lock);
-    philo->data->meals_eaten++;
+    philo->meals_eaten++;
     pthread_mutex_unlock(&philo->data->dead_lock);
     pthread_mutex_unlock(philo->left_fork);
     pthread_mutex_unlock(philo->right_fork);

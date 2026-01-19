@@ -19,19 +19,19 @@ int main(int argc, char **argv)
         return (cleanup(&data, 2), 1);
     init_philos(&data);
     data.start_time = get_time();
-    if (create_threads(&data) == 0)
+    if (create_threads(&data) == 1)
+        return (cleanup(&data, 3), 1);
+    while (1)
     {
-        i = 0;
-        while (i < data.number_philo)
-        {
-            pthread_join(data.philos[i].thread, NULL);
-            i++;
-        }
+        if (check_death(&data) == 1 || check_victory(&data))
+            break ;
+        usleep(1000);
     }
-    else
+    i = 0;
+    while (i < data.number_philo)
     {
-        cleanup(&data, 3);
-        return (1);
+        pthread_join(data.philos[i].thread, NULL);
+        i++;
     }
     cleanup(&data, 3);
     return (0);

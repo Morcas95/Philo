@@ -6,13 +6,13 @@
 /*   By: maalonso <maalonso@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/05 21:41:13 by morcas            #+#    #+#             */
-/*   Updated: 2026/01/15 16:11:38 by maalonso         ###   ########.fr       */
+/*   Updated: 2026/01/19 12:05:42 by maalonso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-void set_value(char **value, t_data *data)
+void set_value(char **value, t_data *data, int argc)
 {
 	int i;
 
@@ -27,8 +27,10 @@ void set_value(char **value, t_data *data)
 			data->time_to_eat = ft_atoi_long(value[i]);
 		if (i == 3)
 			data->time_to_sleep = ft_atoi_long(value[i]);
-		if (i == 4)
-			data->number_eats = ft_atoi(value[i]);
+		if (argc == 5)
+			data->number_of_meals = ft_atoi(value[4]);
+		else
+			data->number_of_meals = -1;
 		i++;
 	}
 	data->simulation_end = 0;
@@ -71,7 +73,7 @@ int	check_input(int argc, char **argv, t_data *data)
 			return (print_error("Error\nOnly numbers to be introduced\n"));
 		i++;
 	}
-	set_value(tmp_array, data);
+	set_value(tmp_array, data, argc);
 	if (argc == 2)
 		free_all(tmp_array);
 	return (0);

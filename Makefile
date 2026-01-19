@@ -10,7 +10,8 @@ SRC =	./src/main.c\
 		./src/lib_functions.c \
 		./src/logs.c \
 		./src/utils.c \
-		./src/actions.c
+		./src/actions.c \
+		./src/monitor.c
 
 OBJ_DIR = obj
 OBJ = $(addprefix $(OBJ_DIR)/, $(notdir $(SRC:.c=.o)))

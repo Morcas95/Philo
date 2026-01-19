@@ -28,7 +28,7 @@ typedef struct s_data
 	long				time_to_die;
 	long         	time_to_eat;
     long             time_to_sleep;
-    int             number_eats;
+    int             number_of_meals;
     int simulation_end;
     pthread_mutex_t *forks;
     t_philo *philos;
@@ -42,7 +42,7 @@ typedef struct s_data
 int	print_error(const char *str);
 void cleanup(t_data *data, int stage);
 int check_input(int argc, char **argv, t_data *data);
-void set_value(char **value, t_data *data);
+void set_value(char **value, t_data *data, int argc);
 int	check_nbr(char *argv);
 int init_mutexes(t_data *data);
 void init_philos(t_data *data);
@@ -61,5 +61,7 @@ void write_status(t_philo *philo, char *status);
 void pick_forks(t_philo *philo);
 void is_eating(t_philo *philo);
 void is_sleeping(t_philo *philo);
+int check_death(t_data *data);
+int check_victory(t_data *data);
 
 #endif

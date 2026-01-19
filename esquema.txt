@@ -70,5 +70,13 @@
 COSAS QUE FALTAN |
 _________________|
 
-RUTINAS EN philosopher_routine (init.c)
 LIMPIAR TENEDORES EN init_mutexes (init.c)
+VERIFICACIÓN DE VICTORIA EN monitor (monitor.c)
+
+Lanzar hilos: Llamar a create_threads(&data).
+
+Monitorizar: Ejecutar una función (ej. monitor_routine(&data)) que contenga el bucle while.
+
+Esperar: Llamar a pthread_join para todos los hilos (esto asegura que el main no avance hasta que los filósofos terminen sus rutinas).
+
+Limpiar: Llamar a cleanup(&data, 3).

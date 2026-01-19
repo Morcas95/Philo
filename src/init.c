@@ -33,7 +33,7 @@ void init_philos(t_data *data)
     while (i < data->number_philo)
     {
         data->philos[i].id = i + 1;
-        data->philos[i].last_meal_time = 0;
+        data->philos[i].last_meal_time = data->start_time;
         data->philos[i].meals_eaten = 0;
         data->philos[i].data = data;
         data->philos[i].left_fork = &data->forks[i];

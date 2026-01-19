@@ -1,5 +1,5 @@
 CC = gcc
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror -pthread
 NAME = philo
 INCLUDE = -I./include
 SRC =	./src/main.c\

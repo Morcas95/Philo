@@ -17,8 +17,8 @@ int main(int argc, char **argv)
         return (free(data.forks), 1);
     if (init_mutexes(&data) != 0)
         return (cleanup(&data, 2), 1);
-    init_philos(&data);
     data.start_time = get_time();
+    init_philos(&data);
     if (create_threads(&data) == 1)
         return (cleanup(&data, 3), 1);
     while (1)

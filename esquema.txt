@@ -2,9 +2,3 @@ COSAS QUE FALTAN |
 _________________|
 
 LIMPIAR TENEDORES EN init_mutexes (init.c)
-
-En el test 1: ./philo 1 800 200 200 el filosofo
-no debería de comer. En mi programa come 1 vez
-
-En el test 2: ./philo 5 800 200 200 ningún filosofo
-debería de morir. En mi programa muere 1

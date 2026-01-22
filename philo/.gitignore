@@ -1,0 +1,13 @@
+# Program compiled
+philo
+
+# Program summary
+esquema
+esquema.txt
+
+# Compiled object files
+obj/
+libft/*.o
+
+# Tester
+42-philosophers-tester/

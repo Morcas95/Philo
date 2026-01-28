@@ -45,7 +45,7 @@ void *philosopher_routine(void *arg)
 {
     t_philo *philo = (t_philo *)arg;
     if (philo->id % 2 == 1)
-        usleep(600);
+        usleep(1000);
     while (1)
     {
         pthread_mutex_lock(&philo->data->dead_lock);

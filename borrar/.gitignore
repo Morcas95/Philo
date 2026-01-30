@@ -8,3 +8,6 @@ esquema.txt
 # Compiled object files
 obj/
 libft/*.o
+
+# Tester
+42-philosophers-tester/

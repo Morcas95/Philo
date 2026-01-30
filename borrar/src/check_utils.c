@@ -6,7 +6,7 @@
 /*   By: maalonso <maalonso@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/05 21:41:13 by morcas            #+#    #+#             */
-/*   Updated: 2026/01/19 13:00:13 by maalonso         ###   ########.fr       */
+/*   Updated: 2026/01/30 12:36:50 by maalonso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,6 @@ void set_value(char **value, t_data *data, int argc)
     data->time_to_sleep = ft_atoi_long(value[3]);
     if (argc == 6)
         data->number_of_meals = ft_atoi(value[4]);
-    else if (argc == 2)
-	{
-		
-	}
 	else
         data->number_of_meals = -1;
     data->simulation_end = 0;

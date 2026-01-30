@@ -47,3 +47,9 @@ char	**free_all(char **str)
 	free(str);
 	return (NULL);
 }
+
+void destroy_forks(t_data *data, int i)
+{
+	while (i-- > 0)
+        pthread_mutex_destroy(&data->forks[i]);
+}

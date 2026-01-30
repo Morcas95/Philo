@@ -10,10 +10,20 @@ void pick_forks(t_philo *philo)
         pthread_mutex_unlock(philo->left_fork);
         return ;
     }
+    if (philo->id % 2 == 0) // Los pares son "diestros"
+    {
         pthread_mutex_lock(philo->right_fork);
         write_status(philo, "has taken a fork");
         pthread_mutex_lock(philo->left_fork);
         write_status(philo, "has taken a fork");
+    }
+    else // Los impares son "zurdos"
+    {
+        pthread_mutex_lock(philo->left_fork);
+        write_status(philo, "has taken a fork");
+        pthread_mutex_lock(philo->right_fork);
+        write_status(philo, "has taken a fork");
+    }
 }
 
 void is_eating(t_philo *philo)

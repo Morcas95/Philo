@@ -9,19 +9,18 @@ int init_mutexes(t_data *data)
     {
         if (pthread_mutex_init(&data->forks[i], NULL) != 0)
         {
-            while (i-- > 0)
-                pthread_mutex_destroy(&data->forks[i]);
+            destroy_forks(data, i);
             return (1); 
         }
         i++;
     }
-    /**
-     * ! Tengo que cambiar esto para que si falla 
-     * ! write_lock o dead_lock también limpie los tenedores */
     if (pthread_mutex_init(&data->write_lock, NULL) != 0)
-        return (1);
+        return (destroy_forks(data, i), 1);
     if (pthread_mutex_init(&data->dead_lock, NULL) != 0)
+    {
+        destroy_forks(data, i);
         return (pthread_mutex_destroy(&data->write_lock), 1);
+    }
     return (0);
 }
 
@@ -62,6 +61,10 @@ void *philosopher_routine(void *arg)
         is_eating(philo);
         is_sleeping(philo);
         write_status(philo, "is thinking");
+        if (philo->data->number_philo % 2 == 1)
+            usleep(100);
+        else
+            usleep(1);
     }
     return (NULL);
 }

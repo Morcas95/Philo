@@ -44,8 +44,11 @@ void init_philos(t_data *data)
 void *philosopher_routine(void *arg)
 {
     t_philo *philo = (t_philo *)arg;
+    long think_time;
+    
+    think_time = (philo->data->time_to_die - (philo->data->time_to_eat + philo->data->time_to_sleep)) / 2;
     if (philo->id % 2 == 0)
-        usleep(1000);
+        ft_usleep(philo->data->time_to_eat / 10, philo->data);
     while (1)
     {
         pthread_mutex_lock(&philo->data->dead_lock);
@@ -61,10 +64,10 @@ void *philosopher_routine(void *arg)
         is_eating(philo);
         is_sleeping(philo);
         write_status(philo, "is thinking");
-        if (philo->data->number_philo % 2 == 1)
-            usleep(100);
+        if (think_time > 0)
+            ft_usleep(think_time, philo->data);
         else
-            usleep(1);
+            usleep(500);
     }
     return (NULL);
 }

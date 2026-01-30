@@ -25,7 +25,7 @@ int main(int argc, char **argv)
     {
         if (check_death(&data) == 1 || check_victory(&data))
             break ;
-        usleep(200);
+        usleep(100);
     }
     i = 0;
     while (i < data.number_philo)

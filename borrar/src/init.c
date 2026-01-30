@@ -46,7 +46,7 @@ void *philosopher_routine(void *arg)
     t_philo *philo = (t_philo *)arg;
     long think_time;
     
-    think_time = (philo->data->time_to_die - (philo->data->time_to_eat + philo->data->time_to_sleep)) / 2;
+    think_time = (philo->data->time_to_die - (philo->data->time_to_eat + philo->data->time_to_sleep)) / 4;
     if (philo->id % 2 == 0)
         ft_usleep(philo->data->time_to_eat / 10, philo->data);
     while (1)
@@ -64,10 +64,13 @@ void *philosopher_routine(void *arg)
         is_eating(philo);
         is_sleeping(philo);
         write_status(philo, "is thinking");
-        if (think_time > 0)
-            ft_usleep(think_time, philo->data);
-        else
-            usleep(500);
+        if (philo->data->number_philo % 2 == 1)
+        {
+            if (think_time > 0)
+                ft_usleep(think_time, philo->data);
+            else
+                usleep(500);
+        }
     }
     return (NULL);
 }

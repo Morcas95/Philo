@@ -6,19 +6,19 @@
 /*   By: maalonso <maalonso@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/05 21:41:13 by morcas            #+#    #+#             */
-/*   Updated: 2026/01/30 12:36:50 by maalonso         ###   ########.fr       */
+/*   Updated: 2026/01/30 13:22:10 by maalonso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-void set_value(char **value, t_data *data, int argc)
+void set_value(char **value, t_data *data)
 {
     data->number_philo = ft_atoi(value[0]);
     data->time_to_die = ft_atoi_long(value[1]);
     data->time_to_eat = ft_atoi_long(value[2]);
     data->time_to_sleep = ft_atoi_long(value[3]);
-    if (argc == 6)
+    if (value[4])
         data->number_of_meals = ft_atoi(value[4]);
 	else
         data->number_of_meals = -1;
@@ -62,7 +62,7 @@ int	check_input(int argc, char **argv, t_data *data)
 			return (print_error("Error\nOnly numbers to be introduced\n"));
 		i++;
 	}
-	set_value(tmp_array, data, argc);
+	set_value(tmp_array, data);
 	if (argc == 2)
 		free_all(tmp_array);
 	return (0);

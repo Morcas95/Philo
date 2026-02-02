@@ -23,6 +23,6 @@ void ft_usleep(long time, t_data *data)
             break;
         }
         pthread_mutex_unlock(&data->dead_lock);
-        usleep(10);
+        usleep(100);
     }
 }

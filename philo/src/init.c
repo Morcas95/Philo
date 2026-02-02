@@ -44,10 +44,7 @@ void init_philos(t_data *data)
 void *philosopher_routine(void *arg)
 {
     t_philo *philo = (t_philo *)arg;
-    if (philo->data->number_philo > 100)
-        if (philo->id % 2 == 0)
-            usleep(philo->data->time_to_eat * 0.5);
-    else if (philo->id % 2 == 0)
+    if (philo->id % 2 == 0)
         usleep(1000);
     while (1)
     {

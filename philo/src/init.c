@@ -62,7 +62,7 @@ void *philosopher_routine(void *arg)
         is_sleeping(philo);
         write_status(philo, "is thinking");
         if (philo->data->number_philo % 2 == 1)
-            usleep(25);
+            usleep(100);
         else
             usleep(1);
     }

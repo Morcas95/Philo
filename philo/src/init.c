@@ -44,8 +44,6 @@ void init_philos(t_data *data)
 void *philosopher_routine(void *arg)
 {
     t_philo *philo = (t_philo *)arg;
-    if (philo->id % 2 == 0)
-        usleep(1000);
     while (1)
     {
         pthread_mutex_lock(&philo->data->dead_lock);

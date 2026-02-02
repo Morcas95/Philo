@@ -20,9 +20,9 @@ void ft_usleep(long time, t_data *data)
         if (data->simulation_end == 1)
         {
             pthread_mutex_unlock(&data->dead_lock);
-            break;
+            return ;
         }
         pthread_mutex_unlock(&data->dead_lock);
-        usleep(100);
+        usleep(50);
     }
 }

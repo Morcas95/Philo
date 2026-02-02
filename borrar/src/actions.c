@@ -38,6 +38,10 @@ void is_eating(t_philo *philo)
     pthread_mutex_unlock(&philo->data->dead_lock);
     pthread_mutex_unlock(philo->left_fork);
     pthread_mutex_unlock(philo->right_fork);
+    if (philo->data->time_to_die < philo->data->time_to_eat + philo->data->time_to_sleep)
+    {
+        ft_usleep((philo->data->time_to_die - philo->data->time_to_eat) / 2, philo->data);
+    }
 }
 
 void is_sleeping(t_philo *philo)

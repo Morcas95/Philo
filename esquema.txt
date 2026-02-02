@@ -1,4 +1,0 @@
-COSAS QUE FALTAN |
-_________________|
-
-LIMPIAR TENEDORES EN init_mutexes (init.c)

@@ -43,6 +43,7 @@ void init_philos(t_data *data)
 
 void *philosopher_routine(void *arg)
 {
+    long    think_time;
     t_philo *philo = (t_philo *)arg;
     if (philo->id % 2 == 0)
         usleep(1000);
@@ -62,9 +63,16 @@ void *philosopher_routine(void *arg)
         is_sleeping(philo);
         write_status(philo, "is thinking");
         if (philo->data->number_philo % 2 == 1)
-            usleep(100);
+        {
+            think_time = (philo->data->time_to_eat * 2) - philo->data->time_to_sleep;
+            if (think_time < 0)
+                think_time = 1;
+            if (think_time > 600)
+                think_time = 600;
+            ms_sleep_check(philo->data, think_time);
+        }
         else
-            usleep(1);
+            ms_sleep_check(philo->data, 1);
     }
     return (NULL);
 }

@@ -55,6 +55,7 @@ int create_threads(t_data *data);
 /* UTILS */
 long get_time(void);
 void ft_usleep(long time, t_data *data);
+void	ms_sleep_check(t_data *data, long ms);
 int	ft_atoi(const char *nptr);
 long	ft_atoi_long(const char *str);
 char	**ft_split(char const *s, char c);

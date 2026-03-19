@@ -6,7 +6,7 @@ long get_time(void)
 
     if (gettimeofday(&tv, NULL))
         return (0);
-    return ((tv.tv_sec * 1000) + (tv.tv_usec / 1000));
+    return ((tv.tv_sec * 1000L) + (tv.tv_usec / 1000L));
 }
 
 void ft_usleep(long time, t_data *data)
@@ -25,4 +25,17 @@ void ft_usleep(long time, t_data *data)
         pthread_mutex_unlock(&data->dead_lock);
         usleep(100);
     }
+}
+
+void	ms_sleep_check(t_data *data, long ms)
+{
+	long	start;
+
+	start = get_time();
+	while ((get_time() - start) < ms)
+	{
+		if (data && data->simulation_end == 1)
+			break ;
+		usleep(200);
+	}
 }

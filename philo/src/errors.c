@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   errors.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: maalonso <maalonso@student.42madrid.com    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/03/19 15:13:58 by maalonso          #+#    #+#             */
+/*   Updated: 2026/03/19 15:14:07 by maalonso         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "philo.h"
 
 int	print_error(const char *str)
@@ -13,25 +25,25 @@ int	print_error(const char *str)
 	return (1);
 }
 
-void cleanup(t_data *data, int stage)
+void	cleanup(t_data *data, int stage)
 {
-    int i;
-    
-    if (stage >= 1 && data->forks)
-        free(data->forks);
-    if (stage >= 2 && data->philos)
-        free(data->philos);
-    if (stage >= 3)
-    {
-        i = 0;
-        while (i < data->number_philo)
-        {
-            pthread_mutex_destroy(&data->forks[i]);
-            i++;
-        }
-        pthread_mutex_destroy(&data->write_lock);
-        pthread_mutex_destroy(&data->dead_lock);
-    }
+	int	i;
+
+	if (stage >= 1 && data->forks)
+		free(data->forks);
+	if (stage >= 2 && data->philos)
+		free(data->philos);
+	if (stage >= 3)
+	{
+		i = 0;
+		while (i < data->number_philo)
+		{
+			pthread_mutex_destroy(&data->forks[i]);
+			i++;
+		}
+		pthread_mutex_destroy(&data->write_lock);
+		pthread_mutex_destroy(&data->dead_lock);
+	}
 }
 
 char	**free_all(char **str)
@@ -48,8 +60,8 @@ char	**free_all(char **str)
 	return (NULL);
 }
 
-void destroy_forks(t_data *data, int i)
+void	destroy_forks(t_data *data, int i)
 {
 	while (i-- > 0)
-        pthread_mutex_destroy(&data->forks[i]);
+		pthread_mutex_destroy(&data->forks[i]);
 }

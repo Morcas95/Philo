@@ -6,27 +6,26 @@
 /*   By: maalonso <maalonso@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/05 21:41:13 by morcas            #+#    #+#             */
-/*   Updated: 2026/01/19 13:00:13 by maalonso         ###   ########.fr       */
+/*   Updated: 2026/03/19 15:13:27 by maalonso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-void set_value(char **value, t_data *data, int argc)
+void	set_value(char **value, t_data *data, int argc)
 {
-    data->number_philo = ft_atoi(value[0]);
-    data->time_to_die = ft_atoi_long(value[1]);
-    data->time_to_eat = ft_atoi_long(value[2]);
-    data->time_to_sleep = ft_atoi_long(value[3]);
-    if (argc == 6)
-        data->number_of_meals = ft_atoi(value[4]);
-    else if (argc == 2)
+	data->number_philo = ft_atoi(value[0]);
+	data->time_to_die = ft_atoi_long(value[1]);
+	data->time_to_eat = ft_atoi_long(value[2]);
+	data->time_to_sleep = ft_atoi_long(value[3]);
+	if (argc == 6)
+		data->number_of_meals = ft_atoi(value[4]);
+	else if (argc == 2)
 	{
-		
 	}
 	else
-        data->number_of_meals = -1;
-    data->simulation_end = 0;
+		data->number_of_meals = -1;
+	data->simulation_end = 0;
 }
 
 int	check_nbr(char *argv)
@@ -48,8 +47,8 @@ int	check_input(int argc, char **argv, t_data *data)
 {
 	int		i;
 	long	tmp_argv;
-	
 	char	**tmp_array;
+
 	i = 0;
 	if (argc == 2)
 		tmp_array = ft_split(argv[1], ' ');
@@ -61,7 +60,7 @@ int	check_input(int argc, char **argv, t_data *data)
 			return (print_error("Error\nEmpty argument\n"));
 		tmp_argv = ft_atoi_long(tmp_array[i]);
 		if (tmp_argv < 1 || tmp_argv > INT_MAX)
-			return (print_error("Error\nOnly positive numbers inside INT range\n"));
+			return (print_error("Error\nPositive numbers inside INT range\n"));
 		if (!check_nbr(tmp_array[i]))
 			return (print_error("Error\nOnly numbers to be introduced\n"));
 		i++;

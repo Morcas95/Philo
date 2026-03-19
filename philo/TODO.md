@@ -1,0 +1,12 @@
+# Norminette
+-[X] actions.c
+-[X] check_utils.c
+-[X] errors.c
+-[ ] init.c
+-[X] lib_functions.c
+-[X] logs.c
+-[ ] main.c
+-[X] monitor.c
+-[X] time.c
+-[X] utils.c
+-[X] philo.h

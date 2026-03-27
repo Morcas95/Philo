@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   errors.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: maalonso <maalonso@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: morcas <morcas@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/19 15:13:58 by maalonso          #+#    #+#             */
-/*   Updated: 2026/03/19 15:14:07 by maalonso         ###   ########.fr       */
+/*   Updated: 2026/03/27 19:53:58 by morcas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,10 +29,6 @@ void	cleanup(t_data *data, int stage)
 {
 	int	i;
 
-	if (stage >= 1 && data->forks)
-		free(data->forks);
-	if (stage >= 2 && data->philos)
-		free(data->philos);
 	if (stage >= 3)
 	{
 		i = 0;
@@ -44,6 +40,10 @@ void	cleanup(t_data *data, int stage)
 		pthread_mutex_destroy(&data->write_lock);
 		pthread_mutex_destroy(&data->dead_lock);
 	}
+	if (stage >= 2 && data->philos)
+		free(data->philos);
+	if (stage >= 1 && data->forks)
+		free(data->forks);
 }
 
 char	**free_all(char **str)
